@@ -27,7 +27,7 @@ func main() {
 	}
 
 	if len(allnb) == 0 {
-		fmt.Println("need nomber")
+		fmt.Println("need nomber in file")
 		return
 	}
 	//appel de tout les fonctions
