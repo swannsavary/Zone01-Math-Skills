@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"math-skills/tools"
 	"os"
 )
@@ -19,7 +20,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		return
 	}
-	//met tout les nombre dans allnb
+	//met tout les nombres dans allnb
 	allnb, err := tools.Splitnb(file)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -30,10 +31,10 @@ func main() {
 		fmt.Println("need nomber in file")
 		return
 	}
-	//appel de tout les fonctions
+	//appel de tout les fonctions et les arrondits a l'unite la plus proche
 	tools.Tricroissant(allnb)
-	fmt.Println("Average:", int(tools.Average(allnb)))
-	fmt.Println("Median:", int(tools.Median(allnb)))
-	fmt.Println("Variance:", int(tools.Variance(allnb)))
-	fmt.Println("Standard Deviation:", int(tools.StandardDeviation(allnb)))
+	fmt.Println("Average:", int(math.Round(tools.Average(allnb))))
+	fmt.Println("Median:", int(math.Round(tools.Median(allnb))))
+	fmt.Println("Variance:", int(math.Round(tools.Variance(allnb))))
+	fmt.Println("Standard Deviation:", int(math.Round(tools.StandardDeviation(allnb))))
 }
