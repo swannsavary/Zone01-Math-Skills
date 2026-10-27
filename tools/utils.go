@@ -2,6 +2,8 @@ package tools
 
 import (
 	"errors"
+	"math"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -11,10 +13,11 @@ func Splitnb(file []byte) ([]int, error) {
 	nbs := strings.Split(string(file), "\n")
 	var result []int
 	for _, nb := range nbs {
+		nb = strings.TrimSpace(nb)
 		if nb != "" {
 			nombre, err := strconv.Atoi(nb)
 			if err != nil {
-				return nil, errors.New("not a nombre")
+				return nil, errors.New("not a nomber")
 
 			}
 			result = append(result, nombre)
@@ -32,4 +35,9 @@ func Tricroissant(nbs []int) {
 			}
 		}
 	}
+}
+
+// affiche les resultats sous la forme "label" : valeur
+func PrintStat(label string, value float64) {
+	os.Stdout.WriteString(label + ": " + strconv.Itoa(int(math.Round(value))) + "\n")
 }

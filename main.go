@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"math"
 	"math-skills/tools"
 	"os"
 )
@@ -11,30 +9,30 @@ func main() {
 	//regade quel fichier regarder
 	args := os.Args[1:]
 	if len(args) != 1 {
-		fmt.Println("need a file with numbers")
+		os.Stderr.WriteString("need a file with numbers\n")
 		return
 	}
 	//lit le fichier et le copie dans file
 	file, err := os.ReadFile(args[0])
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		os.Stderr.WriteString(err.Error() + "\n")
 		return
 	}
 	//met tout les nombres dans allnb
 	allnb, err := tools.Splitnb(file)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		os.Stderr.WriteString(err.Error() + "\n")
 		return
 	}
 
 	if len(allnb) == 0 {
-		fmt.Println("need nomber in file")
+		os.Stderr.WriteString("need numbers in file\n")
 		return
 	}
-	//appel de tout les fonctions et les arrondits a l'unite la plus proche
+	//appel de toute les fonctions et les arrondits a l'unite la plus proche
 	tools.Tricroissant(allnb)
-	fmt.Println("Average:", int(math.Round(tools.Average(allnb))))
-	fmt.Println("Median:", int(math.Round(tools.Median(allnb))))
-	fmt.Println("Variance:", int(math.Round(tools.Variance(allnb))))
-	fmt.Println("Standard Deviation:", int(math.Round(tools.StandardDeviation(allnb))))
+	tools.PrintStat("Average", tools.Average(allnb))
+	tools.PrintStat("Median", tools.Median(allnb))
+	tools.PrintStat("Variance", tools.Variance(allnb))
+	tools.PrintStat("Standard Deviation", tools.StandardDeviation(allnb))
 }
