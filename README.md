@@ -29,7 +29,7 @@ go run . <file.txt>
 Example:
 
 ```bash
-go run . data.txt
+go run . example.txt
 ```
 
 ## Input format
@@ -70,7 +70,7 @@ The numbers do not need to be sorted in the file: the program sorts them before 
 
 - If no file (or more than one) is given, the program prints `need a file with numbers`
 - If the file contains no numbers, the program prints `need numbers in file`
-- If a line is not a valid integer, the program prints `not a nomber`
+- If a line is not a valid integer, the program prints `not a number`
 - If the file cannot be read, the error from Go is printed as is
 
 ## Tests
